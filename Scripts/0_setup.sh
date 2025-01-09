@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+	CREATE OR REPLACE FUNCTION public.onUpdate_timestamp()
+		RETURNS trigger
+		LANGUAGE 'plpgsql'
+		COST 100
+		VOLATILE NOT LEAKPROOF
+	AS \$BODY\$
+	BEGIN
+	NEW.updated_at := NOW();
+	RETURN NEW;
+	END;
+	\$BODY\$;
+
+	ALTER FUNCTION public.onUpdate_timestamp()
+		OWNER TO "$POSTGRES_USER";
+
+	CREATE SCHEMA IF NOT EXISTS companies AUTHORIZATION "$POSTGRES_USER";
+	CREATE SCHEMA IF NOT EXISTS groceries AUTHORIZATION "$POSTGRES_USER";
+EOSQL

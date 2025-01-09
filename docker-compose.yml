@@ -1,0 +1,24 @@
+services:
+  lifedb:
+    container_name: lifedatabase
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_USER: Kishiin
+      POSTGRES_DB: LifeDatabase
+      PGDATA: /var/lib/postgresql/data/pgdata
+    secrets:
+      - db_password
+    volumes:
+      - ..\Database:/var/lib/postgresql/data/pgdata
+      - .\postgresql.conf:/etc/postgresql/postgresql.conf
+      - .\Logs:/etc/postgresql/logs
+      - .\Scripts:/docker-entrypoint-initdb.d
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+
+secrets:
+  db_password:
+    file: postgres_password.txt
