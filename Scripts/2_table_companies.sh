@@ -90,7 +90,7 @@ psql -v ON_ERROR_STOP=1 --username="$POSTGRES_USER" --dbname="$POSTGRES_DB" <<-E
 		EXECUTE FUNCTION public.onUpdate_timestamp();
 
 	/*
-		Company Locations Table
+		Company Addresses Table
 	*/
 
 	CREATE TABLE IF NOT EXISTS companies.company_addresses
