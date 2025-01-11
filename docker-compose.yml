@@ -4,11 +4,11 @@ services:
     image: postgres:latest
     restart: unless-stopped
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
-      POSTGRES_USER: Kishiin
-      POSTGRES_DB: LifeDatabase
+      POSTGRES_USER: kishiin
+      POSTGRES_DB: lifedatabase
       PGDATA: /var/lib/postgresql/data/pgdata
     secrets:
       - db_password
