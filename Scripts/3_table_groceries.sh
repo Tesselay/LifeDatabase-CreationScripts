@@ -9,7 +9,7 @@ psql -v ON_ERROR_STOP=1 --username="$POSTGRES_USER" --dbname="$POSTGRES_DB" <<-E
 
   CREATE TABLE IF NOT EXISTS groceries.groceries
   (
-    id bigint GENERATED ALWAYS AS IDENTITY,
+    id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
     name text COLLATE pg_catalog.default,
     content numeric(1000,2),
     unit bigint,
@@ -45,7 +45,7 @@ psql -v ON_ERROR_STOP=1 --username="$POSTGRES_USER" --dbname="$POSTGRES_DB" <<-E
 
   CREATE TABLE IF NOT EXISTS groceries.categories
   (
-    id bigint GENERATED ALWAYS AS IDENTITY,
+    id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
     name text COLLATE pg_catalog.default,
     created_at timestamp with time zone NOT NULL DEFAULT now(),
     updated_at timestamp with time zone,
@@ -101,7 +101,7 @@ psql -v ON_ERROR_STOP=1 --username="$POSTGRES_USER" --dbname="$POSTGRES_DB" <<-E
 
   CREATE TABLE IF NOT EXISTS groceries.grocery_purchases
   (
-    id bigint GENERATED ALWAYS AS IDENTITY,
+    id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
     article_id bigint NOT NULL,
     price numeric(1000,2),
     price_per_unit numeric(1000,2),

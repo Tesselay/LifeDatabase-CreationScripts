@@ -9,7 +9,7 @@ psql -v ON_ERROR_STOP=1 --username="$POSTGRES_USER" --dbname="$POSTGRES_DB" <<-E
 
   CREATE TABLE IF NOT EXISTS companies.companies
   (
-    id bigint GENERATED ALWAYS AS IDENTITY,
+    id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
     name text COLLATE pg_catalog.default,
     created_at timestamp with time zone NOT NULL DEFAULT now(),
     updated_at timestamp with time zone,
@@ -33,7 +33,7 @@ psql -v ON_ERROR_STOP=1 --username="$POSTGRES_USER" --dbname="$POSTGRES_DB" <<-E
 
 	CREATE TABLE IF NOT EXISTS companies.brands
   (
-    id bigint GENERATED ALWAYS AS IDENTITY,
+    id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
     name text COLLATE pg_catalog.default,
     company_id bigint NOT NULL,
     created_at timestamp with time zone NOT NULL DEFAULT now(),
