@@ -1,0 +1,6 @@
+[submodule "server"]
+	path = server
+	url = https://github.com/Tesselay/scholars-chronicles-server.git
+[submodule "client"]
+	path = client
+	url = https://github.com/Tesselay/scholars-chronicles-client.git
