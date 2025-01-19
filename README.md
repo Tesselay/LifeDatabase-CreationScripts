@@ -141,10 +141,10 @@ Distributed under the. See `LICENSE.txt` for more information.
 <!-- FAQ -->
 ## FAQ
 
-> **Why submodules?**
-> 
-> The main repository just exists for infrastructure and will change rarely. Merge conflicts can be resolved inside the
-> submodules independently and should the use case change, moving away from submodules should not be too difficult here.
+### Why submodules?
+
+The main repository just exists for infrastructure and will change rarely. Merge conflicts can be resolved inside the
+submodules independently and should the use case change, moving away from submodules should not be too difficult here.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
